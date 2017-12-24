@@ -42,11 +42,27 @@ class CategoryController extends Controller
 
     	return redirect('/categories');
 
-    	return back();
+    }
+    public function edit($id){
+        $category = Category::find($id);
+        return view('categories.edit')->with(compact('category'));
 
     }
-    public function show(){
+    public function update(Request $request, $id){
+        $category = Category::find($id);
+        $category->name = $request->input('name');
+        $category->description = $request->input('description');
+        $category->save(); // UPDATE en la tabla category
 
+        return redirect('/categories');
+    }
+
+    public function destroy($id){
+        $category = Category::find($id);
+
+        $category->delete(); // DELETE en la tabla category
+
+        return back();
     }
 
 }
