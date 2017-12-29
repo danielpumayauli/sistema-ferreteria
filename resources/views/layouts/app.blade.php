@@ -47,7 +47,8 @@
                     <li class="@yield('inicio-class')"><a href="{{ route('home') }}">inicio</a></li>
                     <li class="@yield('productos-class')"><a href="">productos</a></li>
                     <li class="@yield('categorias-class')"><a href="{{ route('categories.index') }}">categorias</a></li>
-                    <li class="@yield('caja-class')"><a href="">caja</a></li>
+                    <li class="@yield('caja-class')"><a href="">caja</a>
+                        <li class="@yield('proveedores-class')"><a href="{{ route('providers.index') }}">proveedores</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                             {{ Auth::user()->name }} <span class="caret"></span>

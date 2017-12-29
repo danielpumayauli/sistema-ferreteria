@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'Categorías')
+@section('title', 'Proveedores')
 
 @section('body-class', 'product-page')
 
-@section('categorias-class', 'active')
+@section('proveedores-class', 'active')
 
 @section('content')
 <div class="header header-filter" style="background-image: url('https://images.unsplash.com/photo-1423655156442-ccc11daa4e99?crop=entropy&dpr=2&fit=crop&fm=jpg&h=750&ixjsv=2.1.0&ixlib=rb-0.3.5&q=50&w=1450');">
@@ -15,7 +15,7 @@
     <div class="container">
 
         <div class="section">
-            <h2 class="title  text-center">Categorías</h2>
+            <h2 class="title  text-center">Proveedores</h2>
 
             @if(session('status'))
 
@@ -26,7 +26,7 @@
             @endif
             <div class="row text-center">
                 <div class="btn-group">
-                    <a href="{{url('/categories/create')}}" class="btn btn-primary btn-round pull-right">Agregar Categoría</a>
+                    <a href="{{url('/providers/create')}}" class="btn btn-primary btn-round pull-right">Agregar Proveedor</a>
                 </div>
             </div>
             
@@ -35,29 +35,33 @@
                 <thead>
                     <tr>
                         <th class="text-center">#</th>
-                        <th>Categoría</th>
-                        <th>Descripción</th>
+                        <th>Proveedor</th>
+                        <th class="col-md-2">Dirección</th>
+                        <th class="col-md-4">Descripción</th>
+                        <th>Teléfono</th>
                         <th class="text-right">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($categories as $categorie)
+                    @foreach ($providers as $provider)
                     <tr>
-                        <td class="text-center">{{ $categorie->id }}</td>
-                        <td>{{ $categorie->name }}</td>
-                        <td>{{ $categorie->description }}</td>
+                        <td class="text-center">{{ $provider->id }}</td>
+                        <td>{{ $provider->name }}</td>
+                        <td class="col-md-2">{{ $provider->address }}</td>
+                        <td class="col-md-4">{{ $provider->description }}</td>
+                        <td>{{ $provider->telephone }}</td>
                         <td class="td-actions text-right">
 
-                            <form method="POST" action="{{route('categories.destroy', $categorie->id)}}">
+                            <form method="POST" action="{{route('providers.destroy', $provider->id)}}">
                                 {{csrf_field()}}
                                 {{method_field('DELETE')}}
                                 <!-- <a href="" rel="tooltip" title="Ver Categoria" class="btn btn-info btn-simple btn-xs">
                                     <i class="fa fa-user"></i>
                                 </a> -->
-                                <a href="{{route('categories.edit', $categorie->id)}}" rel="tooltip" title="Editar Categoria" class="btn btn-success btn-simple btn-xs">
+                                <a href="{{route('providers.edit', $provider->id)}}" rel="tooltip" title="Editar Proveedor" class="btn btn-success btn-simple btn-xs">
                                     <i class="fa fa-edit"></i>
                                 </a>
-                                <button type="submit" rel="tooltip" title="Eliminar Categoria" class="btn btn-danger btn-simple btn-xs">
+                                <button type="submit" rel="tooltip" title="Eliminar Proveedor" class="btn btn-danger btn-simple btn-xs">
                                     <i class="fa fa-times"></i>
                                 </button>
                             </form>
