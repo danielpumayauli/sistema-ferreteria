@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Product;
+use App\Category;
 
 class HomeController extends Controller
 {
@@ -25,7 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $products = Product::orderBy('id', 'ASC')->paginate(10);
-        return view('home')->with(compact('products'));
+        $products = Product::all();
+        $categories =Category::orderBy('id', 'ASC')->paginate(10);
+        return view('home')->with(compact('categories', 'products'));
     }
 }

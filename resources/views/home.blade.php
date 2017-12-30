@@ -53,7 +53,7 @@
                                 <li class="active">
                                     <a href="#profile" data-toggle="tab">
                                         <i class="material-icons">face</i>
-                                        Productos
+                                        Stock
                                     </a>
                                 </li>
                                 <li>
@@ -76,6 +76,7 @@
                 <div class="content">
                     <div class="tab-content text-center">
                         <div class="tab-pane active" id="profile">
+
                             
                             <table class="table">
                                 <thead>
@@ -83,29 +84,22 @@
                                         <th class="text-center">#</th>
                                         <th class="col-md-2 text-center">Nombre</th>
                                         <th class="col-md-5 text-center">Descripción</th>
-                                        <th>Precio</th>
-                                        <th class="text-center">Categoría</th>
                                         <th class="text-center">Stock</th>
                                         <th class="text-center">Valuación</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($products as $product)
+                                    @foreach ($categories as $category)
                                     <tr>
-                                        <td class="text-center">{{ $product->id }}</td>
-                                        <td>{{ $product->name }}</td>
-                                        <td>{{ $product->description }}</td>
-                                        <td>{{ $product->price }}</td>
-                                        <td class="text-center"><span class="label label-info">{{ $product->category->name }}</span></td>
-                                        <td class="text-center">XX Unid.</td>
+                                        <td class="text-center">{{ $category->id }}</td>
+                                        <td>{{ $category->name }}</td>
+                                        <td>{{ $category->description }}</td>
+                                        <td class="text-center">{{ $products->where('category_id', $category->id)->count() }} Unid.</td>
                                         <td class="text-center">S/. XX.xx</td>
                                     </tr>
                                     @endforeach
                                 </tbody>
                             </table>
-                            <div class="text-center">
-                                {{$products->links()}}
-                            </div>
                             
                             
                         </div>
