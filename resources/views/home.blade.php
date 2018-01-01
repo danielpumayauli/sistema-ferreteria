@@ -7,15 +7,20 @@
 @section('inicio-class', 'active')
 
 @section('content')
-<div class="header header-filter" style="background-image: url('https://images.unsplash.com/photo-1423655156442-ccc11daa4e99?crop=entropy&dpr=2&fit=crop&fm=jpg&h=750&ixjsv=2.1.0&ixlib=rb-0.3.5&q=50&w=1450');">
+<div class="header header-filter" style="background-color: #66bb6a">
 
 </div>
 
 <div class="main main-raised">
     <div class="container">
-
+        <div class="pull-left">
+            <h3>Bienvenido {{ auth()->user()->name}}</h3>
+        </div>
+        @include('includes.buttons')
         <div class="section">
             <h2 class="title  text-center">Dashboard</h2>
+
+            
 
             @if(session('status'))
 
@@ -76,7 +81,9 @@
                 <div class="content">
                     <div class="tab-content text-center">
                         <div class="tab-pane active" id="profile">
-
+                            <div class="container">
+                                <p class="pull-left">Se presentan los siguientes productos acumulados disponibles en inventarios al día de hoy: <span class="label label-info" style="font-size: 1em">{{ $now }}</span></p>
+                            </div>
                             
                             <table class="table">
                                 <thead>
@@ -94,13 +101,13 @@
                                         <td class="text-center">{{ $category->id }}</td>
                                         <td>{{ $category->name }}</td>
                                         <td>{{ $category->description }}</td>
-                                        <td class="text-center">{{ $products->where('category_id', $category->id)->count() }} Unid.</td>
-                                        <td class="text-center">S/. XX.xx</td>
+                                        <td class="text-center">{{ $category->stock }} Unidades</td>
+                                        <td class="text-center">S/. {{ $category->amount }}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>
                             </table>
-                            
+                            {{$categories->links()}}
                             
                         </div>
                         <div class="tab-pane" id="messages">

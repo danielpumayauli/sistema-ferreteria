@@ -20,6 +20,8 @@ class CreateProductsTable extends Migration
             $table->string('description')->nullable();
             $table->text('long_description')->nullable();
             $table->float('price')->nullable();
+            $table->boolean('available')->default(true);
+            $table->integer('quantity')->default(1);
 
             // FK
             $table->integer('category_id')->unsigned()->nullable();
