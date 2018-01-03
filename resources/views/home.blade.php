@@ -17,6 +17,7 @@
             <h3>Bienvenido {{ auth()->user()->name}}</h3>
         </div>
         @include('includes.buttons')
+        
         <div class="section">
             <h2 class="title  text-center">Dashboard</h2>
 
@@ -130,5 +131,6 @@
     </div>
 
 </div>
+
 @include('includes.footer')
 @endsection
