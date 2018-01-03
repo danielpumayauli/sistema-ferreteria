@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOrderCompraDetailsTable extends Migration
+class CreateCompraDetailOrdersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateOrderCompraDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('order_compra_details', function (Blueprint $table) {
+        Schema::create('compra_detail_orders', function (Blueprint $table) {
             $table->increments('id');
 
             // FK header (ORDER_COMPRA)
-            $table->integer('order_compra_id')->unsigned();
-            $table->foreign('order_compra_id')->references('id')->on('order_compras');
+            $table->integer('compra_order_id')->unsigned();
+            $table->foreign('compra_order_id')->references('id')->on('compra_orders');
 
             // FK (PRODUCT)
             $table->integer('product_id')->unsigned();
@@ -38,6 +38,6 @@ class CreateOrderCompraDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('order_compra_details');
+        Schema::dropIfExists('compra_detail_orders');
     }
 }

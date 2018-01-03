@@ -24,3 +24,4 @@ Route::resource('categories', 'CategoryController');
 
 Route::resource('providers', 'ProviderController');
 
+Route::resource('compraOrders', 'CompraOrderController');
